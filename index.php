@@ -16,6 +16,13 @@ session_start();
 
     <div class="container d-flex justify-content-center align-items-center vh-100">
     
+    <div class="text-danger">
+        <?php 
+         if (isset($_SESSION['error'])) { 
+            echo '<p style="color: red;">' . $_SESSION['error'] . '</p>';
+            unset($_SESSION['error']);
+        } ?>
+    </div>
         <div class="card p-4 bg-dark  text-white">
         <form action="proccess-login.php" method="POST">
             <h1 class="text-center mb-4">Iniciar sesion</h1>
@@ -27,6 +34,7 @@ session_start();
             <label for="password" class="form-label">Contraseña</label>
             <input type="password" name="password" placeholder="Escribe tu contraseña" class="form-control">
           </div>
+          <button class="btn btn-danger" type="submit">Iniciar sesion</button>
         </form>
         </div>
     </div>
