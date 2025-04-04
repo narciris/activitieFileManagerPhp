@@ -2,6 +2,10 @@
 session_start();
 require 'data.php';
 $user = $_SESSION['user'];
+
+if(!$user){
+    header('Location: inde.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -17,10 +21,14 @@ $user = $_SESSION['user'];
     <div class="container d-flex justify-content-center vh-100 align-items-center">
         <div class="card p-4 bg-dark">
  
-               <h1 class="text-center text-light">Bienvenido <?php print $user['name'];?></h1>
-            <form action="process-file.php" method="post">
-              <h3 class="text-center text-danger"> Cargar archivos</h1>
-              <input type="file" class="bg-danger" name="file">
+               <h1 class="text-center text-light">Bienvenidx <?php print $user['name'];?></h1>
+            <form action="process-file.php" method="post" enctype="multipart/form-data">
+                <div class="mb-3">
+                <h3 class="text-center text-danger"> Cargar archivos</h1>
+                <input type="file" class="bg-danger" name="file">
+                </div>
+    
+              <button type="submit" class="btn btn-light text-dark">Cargar Archivo</button>
             </form>
             
         </div>
